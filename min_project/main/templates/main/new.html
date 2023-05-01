@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    <h1>제목: <input type="text" name="title"></h1>
+    <p>작성자: <input type="text" name="writer"></p>
+    <p>햄스터 짤 url: <input type="text" name="hamster"></p>
+    <p>날씨:
+        <select name="weather">
+            <option value="맑음">맑음</option>
+            <option value="흐림">흐림</option>
+            <option value="비">비</option>
+            <option value="눈">눈</option>
+            <option value="번개가 번쩍번쩍">번개가 번쩍번쩍</option>
+        </select>
+    </p>
+    <textarea type="text" name="body" id="" cols="50" rows="30"></textarea>
+    <br>
+    <button type="submit">등록</button>
+</form>
+
+{% endblock %}

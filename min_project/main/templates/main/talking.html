@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="notice">
+    <div class="page-title">
+          <div class="container">
+            <img src="{% static 'images/햄스터과일먹는짤.png' %}" style="width:200px; height:200px">  
+            자유게시판
+            <img src="{% static 'images/햄스터과일먹는짤.png' %}" style="width:200px; height:200px">
+          </div>
+      </div>
+  
+      <!-- board seach area -->
+      <div id="board-search">
+          <div class="container">
+              <div class="search-window">
+                  <form action="">
+                      <div class="search-wrap">
+                          <button type="button" onclick="location.href='{% url 'new'%}'">글 쓰기</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+     
+    <!-- board list area -->
+      <div id="board-list">
+          <div class="container">
+              <table class="board-table">
+                  <thead>
+                  <tr>
+                      <th scope="col" class="th-num">번호</th>
+                      <th scope="col" class="th-title">제목</th>
+                      <th scope="col" class="th-title">작성자</th>
+                      <th scope="col" class="th-date">등록일</th>
+                      <th scope="col" class="th-date">요약</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <div>
+                        {% for post in posts %}
+                        <div>
+                            <tr>
+                                <td scope="col" class="th-num">{{post.id}}</td>
+                                <td scope="col" class="th-title">{{post.title}}</td>
+                                <td scope="col" class="th-title">{{post.writer}}</td>
+                                <td scope="col" class="th-date">{{post.pub_date}}</td>
+                                <td scope="col" class="th-title">{{post.summary}}</td>
+                                <td scope="col" class="th-title"><a href="{% url 'detail' post.id %}">...자세히</a></td>
+                            </tr>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+</section>
+{% endblock %}

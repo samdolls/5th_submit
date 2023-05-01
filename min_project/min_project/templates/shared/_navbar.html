@@ -1,0 +1,26 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+    <!-- mainpage 링크 연결 -->
+    <a class="navbar-brand" href="{% url 'mainpage' %}"><img src="{% static 'images/오리.jpg' %}" style="width:50px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <!-- 내정보 링크 연결 -->
+            <a class="nav-link active" aria-current="page" href="{% url 'information' %}">웹정보</a>
+        </li>
+        <li class="nav-item">
+            <!-- 공지사항 링크 연결 -->
+            <a class="nav-link active" aria-current="page" href="{% url 'notion' %}">공지사항</a>
+        </li>
+        <li class="nav-item">
+            <!-- 게시판 링크 연결 -->
+            <a class="nav-link active" aria-current="page" href="{% url 'talking' %}">자유게시판</a>
+        </li>
+        </ul>
+    </div>
+    </div>
+  </nav>

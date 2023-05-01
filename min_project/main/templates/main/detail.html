@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>제목: {{post.title}}</h1>
+    <p>작성자: {{post.writer}}</p>
+    <p>등록일: {{post.pub_date}}</p>
+    <p>햄스터 짤 url: {{post.hamster}}</p>
+    <p>날씨: {{post.weather}}</p>
+    <hr>
+    <p>내용: {{post.body}}</p>
+
+{% endblock %}
