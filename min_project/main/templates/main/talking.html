@@ -17,7 +17,7 @@
               <div class="search-window">
                   <form action="">
                       <div class="search-wrap">
-                          <button type="button" onclick="location.href='{% url 'new'%}'">글 쓰기</button>
+                          <button type="button" onclick="location.href='{% url 'main:new'%}'">글 쓰기</button>
                       </div>
                   </form>
               </div>
@@ -47,7 +47,7 @@
                                 <td scope="col" class="th-title">{{post.writer}}</td>
                                 <td scope="col" class="th-date">{{post.pub_date}}</td>
                                 <td scope="col" class="th-title">{{post.summary}}</td>
-                                <td scope="col" class="th-title"><a href="{% url 'detail' post.id %}">...자세히</a></td>
+                                <td scope="col" class="th-title"><a href="{% url 'main:detail' post.id %}">...자세히</a></td>
                             </tr>
                         </div>
                         {% endfor %}

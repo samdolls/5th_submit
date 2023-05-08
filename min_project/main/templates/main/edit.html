@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<form action="{% url 'main:create' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'main:update' post.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1>제목: <input type="text" name="title"></h1>
-    <p>작성자: <input type="text" name="writer"></p>
-    <p>햄스터 짤 url: <input type="text" name="hamster"></p>
+    <h1>제목: <input type="text" name="title" value={{post.title}}></h1>
+    <p>작성자: <input type="text" name="writer" value={{post.writer}}></p>
+    <p>햄스터 짤 url: <input type="text" name="hamster" value={{post.hamster}}></p>
     <p>날씨:
         <select name="weather">
             <option value="맑음">맑음</option>
@@ -17,10 +17,12 @@
             <option value="번개가 번쩍번쩍">번개가 번쩍번쩍</option>
         </select>
     </p>
-    <p>사진: <input type="file" name="image"></p>
-    <textarea type="text" name="body" id="" cols="50" rows="30"></textarea>
+    <p>사진: <input type="file" name="update_image"></p>
+    <textarea type="text" name="body" id="" cols="50" rows="30">{{post.body}}</textarea>
     <br>
     <button type="submit">등록</button>
+
+
 </form>
 
 {% endblock %}

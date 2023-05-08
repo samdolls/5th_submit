@@ -9,6 +9,11 @@
     <p>햄스터 짤 url: {{post.hamster}}</p>
     <p>날씨: {{post.weather}}</p>
     <hr>
+    {% if post.image %}
+        <img src="{{post.image.url}}" alt="사진">
+    {% endif %}
     <p>내용: {{post.body}}</p>
+    <button type="button" onclick="location.href='{% url 'main:edit' post.id %}'">수정하기</button>
+    <button type="button" onclick="location.href='{% url 'main:delete' post.id %}'">삭제하기</button>
 
 {% endblock %}
