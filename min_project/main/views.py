@@ -48,10 +48,7 @@ def update(request, id):
     update_post.pub_date = timezone.now()
     update_post.hamster = request.POST['hamster']
     update_post.weather = request.POST['weather']
-    update_post.update_image = request.FILES.get('update_image')
-    if update_post.update_image:
-        update_post.image.delete()
-        update_post.image = update_post.update_image
+    update_post.image = request.FILES.get('image', update_post.image)
     update_post.body = request.POST['body']
 
     update_post.save()

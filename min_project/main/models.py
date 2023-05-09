@@ -8,7 +8,6 @@ class Post(models.Model):
     hamster = models.CharField(null=True, max_length = 500)
     weather = models.CharField(null=True, max_length = 50)
     image = models.ImageField(upload_to = 'post/', blank=True, null=True)
-    update_image = models.ImageField(upload_to = 'post/update/', blank=True, null=True)
     body = models.TextField()
 
     def __str__(self):
