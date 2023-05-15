@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<h1 style="font-weight:bold">{{ user.profile.nickname }}님 안녕하세요!</h1><br>
+<ul>
+    <li><p>키우는 동물: {{ user.profile.animal}} (나두 키우고 싶다....) </p></li><br>
+    <li><p>좋아하는 동물: {{ user.profile.favorite }} 솔직히 귀여움 ㅇㅈ</p></li>
+</ul>
+
+<hr><br>
+<h3 style="font-weight:bold">작성한 글</h3><br>
+<div id="board-list">
+    <div class="container">
+        <table class="board-table">
+            <thead>
+            <tr>
+                <th scope="col" class="th-num">번호</th>
+                <th scope="col" class="th-title">제목</th>
+                <th scope="col" class="th-title">작성자</th>
+                <th scope="col" class="th-date">등록일</th>
+                <th scope="col" class="th-date">요약</th>
+            </tr>
+            </thead>
+            <tbody>
+              <div>
+                  {% for writing in writings %}
+                  <div>
+                      <tr>
+                          <td scope="col" class="th-num">{{writing.id}}</td>
+                          <td scope="col" class="th-title">{{writing.title}}</td>
+                          <td scope="col" class="th-title">{{writing.writer}}</td>
+                          <td scope="col" class="th-date">{{writing.pub_date}}</td>
+                          <td scope="col" class="th-title">{{writing.summary}}</td>
+                          <td scope="col" class="th-title"><a href="{% url 'main:detail' writing.id %}">...자세히</a></td>
+                      </tr>
+                  </div>
+                  {% endfor %}
+              </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

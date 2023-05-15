@@ -1,7 +1,14 @@
-body{
-
-}
 
 h1{
+    color:orange;
     font-weight: bold;
+}
+
+h3{
+    text-align : center;
+}
+
+#cform{
+    display: inline-block;
+    textalign: center;
 }

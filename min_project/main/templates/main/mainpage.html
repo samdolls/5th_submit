@@ -54,12 +54,42 @@
           </ul>
       </div>
       </div>
+      <li class="nav-item dropdown">
+        {% if user.is_authenticated %}
+        <!--로그인시 보이는 화면-->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         {{user.username}}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">로그아웃</a></li>
+         <li><a class="dropdown-item" href="{% url 'users:mypage' %}">mypage</a></li>
+        </ul>
+
+    
+        {% else %}
+
+        <!--로그아웃시 보이는 화면-->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         LOGIN
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <li><a class="dropdown-item" href="{% url 'accounts:login' %}">login</a></li>  
+         <li><a class="dropdown-item" href="{% url 'accounts:signup' %}">signup</a></li>
+        </ul>
+
+        {% endif %}
+      </li>
     </nav>
     <h1 class="mainpage_h1">요즘 설치류에 관심이 많아진 민준이 홈페이지에 오신 걸 환영합니다!!</h1>
     <img src="{% static 'images/햄스터놀라는짤.png' %}" style="width: 200px">
     <h2 class="mainpage_h2">햄스터 넘모 귀여워....</h2>
     <img src="{% static 'images/햄스터브이짤.png' %}" style="width: 300px; height: 300px">
-    <h2>글쓰기 과제는 자유게시판에 만들었습니다!!!</h2>
+    <h2>글쓰기 과제는 자유게시판에 만들었습니다!!!</h2><br><br><br>
+    <img src="{% static 'images/친칠라 귀여워 하앜.png' %}" style = "width:300px; height: 300px">
+    <h2>친칠라도 너무 귀여워...</h2>
+    <img src="{% static 'images/친칠라 뚠뚠.jpg' %}" style="width:300px; height:300px">
+    <h2>너무 뚠뚠해....</h2>
+    
 </body>
 </html>
 

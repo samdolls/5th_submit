@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def mainpage(request):
@@ -16,10 +17,11 @@ def talking(request):
     posts=Post.objects.all()
     return render(request, 'main/talking.html', {'posts':posts})
 
+@login_required
 def create(request):
     new_post = Post()
     new_post.title = request.POST['title']
-    new_post.writer = request.POST['writer']
+    new_post.writer = request.user
     new_post.pub_date = timezone.now()
     new_post.hamster = request.POST['hamster']
     new_post.weather = request.POST['weather']
@@ -44,7 +46,7 @@ def edit(request, id):
 def update(request, id):
     update_post = Post.objects.get(id=id)
     update_post.title = request.POST['title']
-    update_post.writer = request.POST['writer']
+    update_post.writer = request.user
     update_post.pub_date = timezone.now()
     update_post.hamster = request.POST['hamster']
     update_post.weather = request.POST['weather']

@@ -6,7 +6,6 @@
 <form action="{% url 'main:update' post.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <h1>제목: <input type="text" name="title" value={{post.title}}></h1>
-    <p>작성자: <input type="text" name="writer" value={{post.writer}}></p>
     <p>햄스터 짤 url: <input type="text" name="hamster" value={{post.hamster}}></p>
     <p>날씨:
         <select name="weather">

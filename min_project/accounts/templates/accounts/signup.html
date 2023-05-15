@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style = "text-align:center">
+    <form action="{% url 'accounts:signup' %}" method="POST">
+        {% csrf_token %}
+        <br><br>
+        <p>아이디:</p>
+        <input type="text" name="username">
+        <br><br>
+        
+        <p>비밀번호:</p>
+        <input type="password" name="password">
+        <br><br>
+        
+        <p>비밀번호 확인:</p>
+        <input type="password" name="confirm">
+        <br><br>
+
+        <p>별명</p>
+        <input type="text" name="nickname">
+        <br><br>
+
+        <p>키우고 있는 동물:</p>
+        <input type="text" name="animal">
+        <br><br>
+
+        <p>좋아하는 동물:</p>
+        <input type="text" name="favorite">
+        <br><br>
+
+        <p>햄스터 좋아하십니까?!</p>
+        <label><input type="radio" name="hamsterlike" value="yes" checked> yes</label>
+        <label><input type="radio" name="hamsterlike" value="no"> no</label>
+        <br>
+        <br>
+
+        <button type="submit">회원가입</button>
+    </form>
+</div>
+
+{% endblock %}
