@@ -37,9 +37,9 @@ def signup(request):
                 password = request.POST['password'],
                 )
                 
-                nickname = request.POST['nickname'],
-                favorite = request.POST['favorite'],
-                animal = request.POST['animal'],
+                nickname = request.POST['nickname']
+                favorite = request.POST['favorite']
+                animal = request.POST['animal']
 
                 profile = Profile(user=user, nickname = nickname, favorite = favorite, animal = animal)
                 profile.save()
