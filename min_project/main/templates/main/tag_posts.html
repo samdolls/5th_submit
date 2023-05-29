@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>#{{tag.name}}의 게시물 목록</h1>
+<hr>
+{% for post in posts %}
+    <h2><a href="{% url 'main:detail' post.id %}">제목: {{post.title}}</a></h2>
+    <h4>작성자: {{post.writer}}</h4>
+    <h3>내용: {{post.body}}</h3>
+    <hr>
+{% endfor %}
+{% for comment in comments %}
+    <h2><a href="{% url 'main:detail' comment.post.id %}">제목:{{comment.post.title}}</a></h2>
+    <h4>작성자: {{comment.post.writer}}</h4>
+    <h3>내용: {{comment.post.body}}</h3>
+    <hr>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3>해쉬태그 목록</h3>
+<form action="{% url 'main:tag_list' %}" method="GET">
+    <input type="text" name="tag_find">
+    <button type="submit">검색</button>
+</form>
+    {% for tag in tags %}
+        <a href="{% url 'main:tag_posts' tag.id %}">#{{tag.name}}</a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

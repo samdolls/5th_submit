@@ -15,9 +15,11 @@
           <div class="container">
               <div class="search-window">
                   <form action="">
+                    {% if user.is_authenticated %}
                       <div class="search-wrap">
                           <button type="button" onclick="location.href='{% url 'main:new'%}'">글 쓰기</button>
                       </div>
+                    {% endif %}
                   </form>
               </div>
           </div>
