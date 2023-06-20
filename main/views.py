@@ -145,4 +145,15 @@ def tag_posts(request, tag_id):
         'comments':comments,
     })
 
+def likes(request, post_id):
+    post = get_object_or_404(Post, id = post_id)
+    if request.user in post.like.all():
+        post.like.remove(request.user)
+        post.like_count -=1
+        post.save()
+    else:
+        post.like.add(request.user)
+        post.like_count +=1
+        post.save()
+    return redirect('main:detail', post.id)
 

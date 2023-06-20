@@ -4,6 +4,22 @@
 {% block content %}
 <br>
 <h1 style="font-weight:bold">{{ user.profile.nickname }}님 안녕하세요!</h1><br>
+{% if request.user != user %}
+    {% if request.user.profile in user.profile.followers.all %}
+        <a href="{% url 'users:follow' user.id %}"><button type="button">언팔로우</button></a>
+    {% else %}
+        <a href="{% url 'users:follow' user.id %}"><button type="button">팔로우</button></a>
+    {% endif %}
+{% endif %}
+<p>팔로워<br>{{user.profile.followers.count}}명</p>
+{% for follower in user.profile.followers.all %}
+    <a href="{% url 'users:mypage' follower.user.id %}">{{follower.user.username}}</a>
+{% endfor %}
+
+<p>팔로잉<br>{{user.profile.followings.count}}명</p>
+{% for following in user.profile.followings.all %}
+    <a href="{% url 'users:mypage' following.user.id %}">{{following.user.username}}</a>
+{% endfor %}
 <ul>
     <li><p>키우는 동물: {{ user.profile.animal}} (나두 키우고 싶다....) </p></li><br>
     <li><p>좋아하는 동물: {{ user.profile.favorite }} 솔직히 귀여움 ㅇㅈ</p></li>

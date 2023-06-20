@@ -45,7 +45,7 @@ def signup(request):
                 profile.save()
 
                 auth.login(request, user)
-                return redirect('/')
+                return redirect('/', user.id)
             elif request.POST['hamsterlike'] == 'no':
                 return render(request, 'accounts/signup_hamsterhate.html')
         elif request.POST['password'] != request.POST['confirm']:
